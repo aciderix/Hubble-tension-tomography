@@ -5,6 +5,12 @@ Bayes factor B_ij = exp(log Z_i - log Z_j) tells us posterior odds for
 model i vs j (assuming equal prior probabilities).
 
 Reference scale: |ln B| > 5 = strong, |ln B| > 2.5 = moderate, < 1 = inconclusive.
+
+Datasets:
+  - Pantheon+SH0ES (1701 SNe + Cepheid anchors)
+  - DESI DR2 BAO (13 measurements)
+  - Planck 2018 distance priors (R, lA, omega_b)
+  - Moresco cosmic chronometers (15 H(z) measurements) [NEW]
 """
 import sys
 from pathlib import Path
@@ -16,6 +22,7 @@ from src.fast_lh import HubbleLH
 from src.cosmo import (rd_planck_anchored, comoving_distance_w0wa_grid,
                        E_w0wa, C_KMS)
 from src.cmb_compressed import chi2_cmb_with_rd
+from src.cosmic_chronometers import chi2_cc
 
 LH = HubbleLH()
 
@@ -26,7 +33,8 @@ def loglike_M0(theta_dict):
     rd = rd_planck_anchored(Om * (H0 / 100) ** 2, obh2)
     chi2 = (LH.chi2_pp(H0, Om, M)
             + LH.chi2_bao(H0, Om, rd)
-            + chi2_cmb_with_rd(H0, Om, obh2, rd))
+            + chi2_cmb_with_rd(H0, Om, obh2, rd)
+            + chi2_cc(H0, Om))
     return -0.5 * chi2
 
 
@@ -36,7 +44,8 @@ def loglike_M1(theta_dict):
                             theta_dict["rd"])
     chi2 = (LH.chi2_pp(H0, Om, M)
             + LH.chi2_bao(H0, Om, rd)
-            + chi2_cmb_with_rd(H0, Om, obh2, rd))
+            + chi2_cmb_with_rd(H0, Om, obh2, rd)
+            + chi2_cc(H0, Om))
     return -0.5 * chi2
 
 
@@ -47,7 +56,8 @@ def loglike_M2(theta_dict):
     rd = rd_planck_anchored(Om * (H0 / 100) ** 2, obh2)
     chi2 = (LH.chi2_pp(H0, Om, M, M_calib=M + dM)
             + LH.chi2_bao(H0, Om, rd)
-            + chi2_cmb_with_rd(H0, Om, obh2, rd))
+            + chi2_cmb_with_rd(H0, Om, obh2, rd)
+            + chi2_cc(H0, Om))
     return -0.5 * chi2
 
 
@@ -58,7 +68,8 @@ def loglike_M5(theta_dict):
                                 theta_dict["rd"], theta_dict["dMcep"])
     chi2 = (LH.chi2_pp(H0, Om, M, M_calib=M + dM)
             + LH.chi2_bao(H0, Om, rd)
-            + chi2_cmb_with_rd(H0, Om, obh2, rd))
+            + chi2_cmb_with_rd(H0, Om, obh2, rd)
+            + chi2_cc(H0, Om))
     return -0.5 * chi2
 
 
@@ -104,24 +115,22 @@ def main():
         "M0": make_prior(),
         "M1": make_prior(extra={"rd": (110.0, 170.0)}),
         "M2": make_prior(extra={"dMcep": (-0.5, 0.5)}),
-        "M5": make_prior(extra={"rd": (110.0, 170.0), "dMcep": (-0.5, 0.5)}),
     }
-    lls = {"M0": loglike_M0, "M1": loglike_M1, "M2": loglike_M2,
-           "M5": loglike_M5}
+    lls = {"M0": loglike_M0, "M1": loglike_M1, "M2": loglike_M2}
 
     res = {}
-    for name in ["M0", "M1", "M2", "M5"]:
+    for name in ["M0", "M1", "M2"]:
         res[name] = run(name, lls[name], priors[name], n_live=400)
 
-    print("\n\n=== Bayesian comparison ===")
-    print(f"{'Model':<8s} {'log Z':>10s}  {'ln B vs M0':>12s}  {'ln B vs M1':>12s}  {'H0':>10s}")
+    print("\n\n=== Bayesian comparison (with cosmic chronometers added) ===")
+    print(f"{'Model':<8s} {'log Z':>10s}  {'ln B vs M0':>12s}  {'ln B vs M1':>12s}  {'H0':>12s}")
     z0 = res["M0"]["log_Z"]
     z1 = res["M1"]["log_Z"]
-    for name in ["M0", "M1", "M2", "M5"]:
+    for name in ["M0", "M1", "M2"]:
         r = res[name]
         h0m, h0s = r["H0"]
         print(f"{name:<8s} {r['log_Z']:>10.3f}  {r['log_Z']-z0:>+12.3f}  "
-              f"{r['log_Z']-z1:>+12.3f}  {h0m:>5.2f}±{h0s:.2f}")
+              f"{r['log_Z']-z1:>+12.3f}  {h0m:>6.2f}±{h0s:.2f}")
 
     print("\nInterpretation:")
     print("  ln B > 5  : strong preference")
