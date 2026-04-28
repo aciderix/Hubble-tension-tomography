@@ -22,7 +22,7 @@ from src.fast_lh import HubbleLH
 from src.cosmo import (rd_planck_anchored, comoving_distance_w0wa_grid,
                        E_w0wa, C_KMS)
 from src.cmb_compressed import chi2_cmb_with_rd
-from src.cosmic_chronometers import chi2_cc
+from src.cosmic_chronometers import chi2_cc_full as chi2_cc
 
 LH = HubbleLH()
 
