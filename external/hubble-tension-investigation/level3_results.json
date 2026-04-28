@@ -1,0 +1,114 @@
+{
+  "level": 3,
+  "steps": {
+    "step1_desi_dr2": {
+      "dataset": "DESI DR2 BAO (13 pts) + Pantheon+ Om prior + SH0ES",
+      "alpha_rd_used": 0.18,
+      "results": {
+        "LCDM_no_SH0ES": {
+          "H0": 68.68,
+          "Om": 0.3045,
+          "chi2": 13.61
+        },
+        "LCDM_with_SH0ES": {
+          "H0": 69.4,
+          "Om": 0.2933,
+          "chi2": 28.29
+        },
+        "EDE_with_SH0ES": {
+          "H0": 73.04,
+          "Om": 0.3045,
+          "f_EDE": 0.332,
+          "chi2": 13.61
+        },
+        "EDE_no_SH0ES": {
+          "H0": 68.68,
+          "Om": 0.3045,
+          "f_EDE": 0.0,
+          "chi2": 13.61
+        }
+      },
+      "delta_chi2_anchored": -14.68,
+      "tension_LCDM_data_only_vs_SH0ES_sigma": -4.19
+    },
+    "step2_classy_CLP": {
+      "purpose": "Test late-time DE evolution at fixed Planck primary params",
+      "lcdm_baseline": {
+        "H0": 67.36,
+        "rd": 147.11,
+        "Om": 0.3138,
+        "S8": 0.842
+      },
+      "scan": [
+        {
+          "wa": 0.0,
+          "H0": 67.36,
+          "rd": 147.11,
+          "S8": 0.842
+        },
+        {
+          "wa": 0.5,
+          "H0": 67.36,
+          "rd": 147.11,
+          "S8": 0.794
+        },
+        {
+          "wa": 1.0,
+          "status": "REJECTED by classy: w_fld_ini >= 0 violates CLP assumptions"
+        },
+        {
+          "wa": 1.5,
+          "status": "REJECTED by classy: w_fld >= 1/3 forbidden"
+        },
+        {
+          "wa": 2.0,
+          "status": "REJECTED by classy: w_fld >= 1/3 forbidden"
+        }
+      ],
+      "verdict": "Late-time DE cannot move H0. classy refuses CLP extensions into EDE regime by construction."
+    },
+    "step3_hybrid": {
+      "datasets": [
+        "Pantheon+ N=1590 z>0.01",
+        "DESI DR2 13-pt BAO",
+        "SH0ES H0=73.04"
+      ],
+      "alpha_rd_used": 0.4,
+      "anchor": "SH0ES on H0_local = H0_global + delta_H_local",
+      "results": {
+        "LCDM_only": {
+          "H0": 73.84,
+          "Om": 0.237,
+          "chi2": 1553.67
+        },
+        "EDE_only": {
+          "H0": 73.52,
+          "Om": 0.304,
+          "f_EDE": 0.165,
+          "chi2": 1416.99
+        },
+        "anisotropy_only": {
+          "H0": 73.69,
+          "Om": 0.239,
+          "delta_H": 0.62,
+          "chi2": 1551.37
+        },
+        "hybrid": {
+          "H0": 73.52,
+          "Om": 0.304,
+          "f_EDE": 0.165,
+          "delta_H": 0.01,
+          "H0_local_eff": 73.53,
+          "chi2": 1416.99
+        }
+      },
+      "delta_chi2": {
+        "EDE_only_vs_LCDM": -136.68,
+        "anisotropy_vs_LCDM": -2.3,
+        "hybrid_vs_LCDM": -136.69,
+        "hybrid_vs_EDE_only": -0.0002
+      },
+      "interpretation": "Hybrid collapses to pure EDE. Local anisotropy z<0.03 contributes negligibly when EDE is allowed in the joint fit."
+    }
+  }
+}

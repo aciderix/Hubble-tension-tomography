@@ -1,0 +1,104 @@
+{
+  "level": 6,
+  "date": "2026-04-28T20:50:00Z",
+  "purpose": "7 sandbox-feasible follow-ups to Levels 1-5",
+  "robust_results": {
+    "BAO_tomography": {
+      "H0_z": [
+        {
+          "z": 0.295,
+          "H0": 70.37,
+          "err": 1.33
+        },
+        {
+          "z": 0.51,
+          "H0": 66.8,
+          "err": 1.23
+        },
+        {
+          "z": 0.706,
+          "H0": 68.75,
+          "err": 1.19
+        },
+        {
+          "z": 0.93,
+          "H0": 68.06,
+          "err": 0.94
+        },
+        {
+          "z": 1.317,
+          "H0": 67.97,
+          "err": 1.59
+        },
+        {
+          "z": 1.491,
+          "H0": 66.69,
+          "err": 1.74
+        },
+        {
+          "z": 2.33,
+          "H0": 67.24,
+          "err": 1.37
+        }
+      ],
+      "slope": -0.94,
+      "slope_err": 0.8,
+      "sigma_from_zero": 1.17,
+      "interpretation": "Flat H0(z) \u2014 favors pre-recombination (EDE) over late-time"
+    },
+    "sigma8_Om_landscape": [
+      {
+        "name": "LCDM-Planck",
+        "Om": 0.315,
+        "sigma8": 0.811,
+        "S8": 0.831,
+        "sigma_KiDS": 3.25,
+        "sigma_DES": 3.24
+      },
+      {
+        "name": "LCDM-SHOES",
+        "Om": 0.296,
+        "sigma8": 0.798,
+        "S8": 0.793,
+        "sigma_KiDS": 1.35,
+        "sigma_DES": 1.0
+      },
+      {
+        "name": "fR_StepC",
+        "Om": 0.26,
+        "sigma8": 0.629,
+        "S8": 0.585,
+        "sigma_KiDS": -9.05,
+        "sigma_DES": -11.24
+      },
+      {
+        "name": "EDE_proper",
+        "Om": 0.28,
+        "sigma8": 0.704,
+        "S8": 0.68,
+        "sigma_KiDS": -4.3,
+        "sigma_DES": -5.65
+      }
+    ],
+    "Fisher_forecast": {
+      "delta_mu_EDE_vs_LCDM": 0.04,
+      "sigma_per_SN": 0.15,
+      "N_for_3sigma": 127,
+      "N_for_5sigma": 352,
+      "Roman_planned": 10000,
+      "Euclid_planned": 1000
+    }
+  },
+  "artefacts_discarded": {
+    "1_dipole": "Synthetic random hemisphere split (no real RA/Dec). 2.16\u03c3 result is meaningless.",
+    "3_CPL": "Optimizer hit boundary (w0=-2, wa=-2). 56\u03c3 result is unphysical.",
+    "6_Hill_pullback": "Used wrong phenomenological E(z) form for EDE. \u0394\u03c7\u00b2=+7854 is nonsense.",
+    "7_BayesFactor": "Inherits #6 bug. Discard ln(BF)=-3931."
+  },
+  "next_steps_in_sandbox": [
+    "Fetch full Pantheon+SH0ES.dat with RA/Dec \u2014 proper dipole test",
+    "DESI DR2 full covariance \u2014 tighter tomography",
+    "Pantheon+ DL(z) spline reconstruction \u2014 model-independent DE evolution"
+  ],
+  "next_steps_local_machine": "See CLAUDE_HANDOFF.md v3 \u2014 AxiCLASS + cobaya MCMC pipeline"
+}

@@ -1,0 +1,63 @@
+{
+  "level": 5,
+  "completed": "2026-04-28T20:50:00Z",
+  "purpose": "Replace Level 4 Step D's naive \u03c38 scaling with proper growth-equation calculation",
+  "method": {
+    "growth_ODE": "D'' + (2+H'/H)D' - (3/2)\u00b7\u03a9m(a)\u00b7\u03bc(k,a)\u00b7D = 0",
+    "transfer": "Eisenstein-Hu zero-baryon BBKS",
+    "window": "Top-hat W(kR) at R=8 Mpc/h",
+    "calibration": "LCDM-Planck \u03a9m=0.315 h=0.6736 \u2192 \u03c38=0.811",
+    "norm_factor": 2159.76
+  },
+  "step_E_correction": {
+    "description": "Recompute \u03c38 properly for each Step C fit",
+    "results_at_Om260_h7301": {
+      "LCDM_only": {
+        "sigma8": 0.629,
+        "S8": 0.585,
+        "sigma_KiDS_DES": -9.03
+      },
+      "fR_fR0_1e-7": {
+        "sigma8": 0.63,
+        "S8": 0.586,
+        "sigma_KiDS_DES": -8.99
+      },
+      "fR_fR0_1e-6": {
+        "sigma8": 0.636,
+        "S8": 0.592,
+        "sigma_KiDS_DES": -8.72
+      },
+      "fR_fR0_1e-5": {
+        "sigma8": 0.661,
+        "S8": 0.615,
+        "sigma_KiDS_DES": -7.53
+      },
+      "fR_fR0_1e-4": {
+        "sigma8": 0.709,
+        "S8": 0.66,
+        "sigma_KiDS_DES": -5.31
+      }
+    },
+    "level4_step_D_S8_claim": 0.78,
+    "level5_step_E_S8_real_at_fR0_1e-5": 0.615,
+    "delta": "Step D overestimated S8 by ~0.16, equivalent to ~8\u03c3 shift"
+  },
+  "step_F_fR_Om_fixed": {
+    "description": "f(R) refit with \u03a9m=0.315 FIXED (Planck prior)",
+    "result": "Optimizer hit H0=60 boundary (cannot reconcile H0=73 with \u03a9m=0.315 in late-time MG)",
+    "interpretation": "f(R) needs LOW \u03a9m to fit SH0ES H0; cannot do both with \u03a9m=0.315"
+  },
+  "step_G_EDE_proper": {
+    "description": "EDE proper refit + proper \u03c38",
+    "result": "Optimizer failed (boundary issues in our parametrization); needs class_ede or AxiCLASS",
+    "estimated_S8_with_proper_growth": 0.7,
+    "estimated_sigma_KiDS_DES": -3.0
+  },
+  "verdict": "Level 4's 'f(R) wins on H0+S8' headline was an artifact of using a naive sigma8 scaling. When sigma8 is computed properly, no late-time modification with low Omega_m simultaneously satisfies H0=73 and S8~0.76. EDE remains the leading candidate, but with a moderate (~2-3 sigma) S8 pull \u2014 not the +6sigma I'd reported. The simultaneous H0+S8 problem requires full Boltzmann code work (CLASS_EDE, MGCAMB) outside this sandbox.",
+  "next_steps_outside_sandbox": [
+    "Install class_ede / AxiCLASS on local machine (gcc/make required)",
+    "Run cobaya MCMC with full CMB + Pantheon+ + BAO + KiDS + DES",
+    "Test interacting DE (Q-coupling) and decaying DM models",
+    "If a candidate survives MCMC: arxiv preprint draft"
+  ]
+}

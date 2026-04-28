@@ -1,0 +1,10 @@
+test,mechanism,H0_mean,H0_sigma,extra_param,extra_value,chi2,tension_vs_SH0ES_sigma,verdict
+A,EDE,71.09,0.20,f_EDE,0.068,357.14,1.84,resolves
+A,EDE_target_73,73.04,0.20,f_EDE_required,0.098,357.14,0.00,resolves
+B,LCDM,63.51,0.50,Om,0.309,314.09,9.07,worsens
+B,w0waCDM,62.27,0.45,wa,-2.753,288.77,9.51,worsens
+C,calibration_lowz_bin1,71.27,0.67,z_range,0.005-0.020,,1.45,no_inconsistency
+C,calibration_lowz_bin2,72.40,0.39,z_range,0.020-0.040,,0.57,no_inconsistency
+C,calibration_lowz_bin3,73.32,0.67,z_range,0.040-0.060,,0.23,no_inconsistency
+C,calibration_lowz_bin5,73.30,0.66,z_range,0.100-0.150,,0.21,no_inconsistency
+C,host_mass_step,72.55_vs_72.63,0.41/0.33,delta_H0,0.08,,0.16,no_inconsistency

@@ -1,0 +1,118 @@
+{
+  "context": "Level 1 anisotropy diagnostic at z<0.03 (post-PV correction)",
+  "sample": "Pantheon+ N=386, zHD \u2208 [0.01, 0.03], non-calibrators",
+  "test_1_per_survey_H0": {
+    "description": "Fit H0 in each photometric survey with N>20",
+    "results": [
+      {
+        "survey_id": 5,
+        "N": 47,
+        "H0": 73.42
+      },
+      {
+        "survey_id": 18,
+        "N": 31,
+        "H0": 74.83
+      },
+      {
+        "survey_id": 50,
+        "N": 24,
+        "H0": 73.05
+      },
+      {
+        "survey_id": 51,
+        "N": 38,
+        "H0": 73.91
+      },
+      {
+        "survey_id": 56,
+        "N": 28,
+        "H0": 72.95
+      },
+      {
+        "survey_id": 57,
+        "N": 35,
+        "H0": 73.66
+      },
+      {
+        "survey_id": 61,
+        "N": 22,
+        "H0": 74.12
+      },
+      {
+        "survey_id": 62,
+        "N": 26,
+        "H0": 73.58
+      },
+      {
+        "survey_id": 63,
+        "N": 33,
+        "H0": 74.02
+      },
+      {
+        "survey_id": 64,
+        "N": 21,
+        "H0": 73.77
+      },
+      {
+        "survey_id": 65,
+        "N": 25,
+        "H0": 73.31
+      },
+      {
+        "survey_id": 66,
+        "N": 29,
+        "H0": 74.18
+      },
+      {
+        "survey_id": 150,
+        "N": 27,
+        "H0": 73.49
+      }
+    ],
+    "range": [
+      72.95,
+      74.83
+    ],
+    "verdict": "All surveys mutually compatible within statistical uncertainty"
+  },
+  "test_2_drop_one_survey": {
+    "description": "Drop each survey, recompute hemisphere H0 span",
+    "baseline_span_km_s_Mpc": 4.88,
+    "drop_one_spans": {
+      "5": 5.12,
+      "18": 4.49,
+      "50": 5.31,
+      "51": 5.93,
+      "56": 4.78,
+      "57": 5.02,
+      "61": 5.41,
+      "62": 4.61,
+      "63": 4.94,
+      "64": 5.18,
+      "65": 4.83,
+      "66": 5.07,
+      "150": 4.71
+    },
+    "span_range": [
+      4.49,
+      5.93
+    ],
+    "verdict": "No single survey collapses signal; anisotropy is distributed"
+  },
+  "high_low_directions": {
+    "high_H0": {
+      "l_gal": 155,
+      "b_gal": -29,
+      "H0": 75.83
+    },
+    "low_H0": {
+      "l_gal": 319,
+      "b_gal": 54,
+      "H0": 70.94
+    },
+    "delta_H0": 4.89,
+    "significance": "2.5\u03c3 post-PV correction"
+  },
+  "conclusion": "Residual 2.5\u03c3 anisotropy is real and distributed, not a single-survey artifact. Below publication threshold; consistent with subdominant true anisotropy OR low-level common systematic in PV correction. Cannot be resolved further with N=386 sample."
+}

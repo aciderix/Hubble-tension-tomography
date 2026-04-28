@@ -1,0 +1,176 @@
+{
+  "level": 4,
+  "completed": "2026-04-28T20:30:00Z",
+  "steps": {
+    "A_anisotropy": {
+      "N_SNe": 1380,
+      "z_max": 0.5,
+      "max_hemisphere_asymmetry_sigma": 1.24,
+      "look_elsewhere_corrected_sigma": 0,
+      "dipole_amplitude": 104,
+      "dipole_amplitude_err": 234,
+      "dipole_RA": 269.5,
+      "dipole_DEC": -0.4,
+      "CMB_misalignment_deg": 79,
+      "conclusion": "Pantheon+ isotropic; SH0ES has no directional bias."
+    },
+    "B_Hz_reconstruction": {
+      "z_nodes": [
+        0.0,
+        0.05,
+        0.15,
+        0.3,
+        0.5,
+        0.8,
+        1.2,
+        1.8,
+        2.4
+      ],
+      "fit1_SHOES_rd147": {
+        "chi2": 724.08,
+        "H0": 69.43
+      },
+      "fit2_no_anchor_rd147": {
+        "chi2": 704.67,
+        "H0": 67.24
+      },
+      "fit3_SHOES_rd_free": {
+        "chi2": 712.77,
+        "H0": 71.52,
+        "rd_best": 139.78,
+        "rd_shrink_pct": 4.94
+      },
+      "tension_localized_z_range": "0.3 to 1.0"
+    },
+    "C_MG_vs_EDE_background": {
+      "models": [
+        {
+          "name": "LCDM_Planck_no_anchor",
+          "chi2": 715.87,
+          "k": 2,
+          "H0": 68.52,
+          "Om": 0.308
+        },
+        {
+          "name": "LCDM_SHOES_anchor",
+          "chi2": 731.71,
+          "k": 2,
+          "H0": 69.25,
+          "Om": 0.296
+        },
+        {
+          "name": "DGP_brane",
+          "chi2": 716.42,
+          "k": 3,
+          "H0": 73.04,
+          "Om": 0.211,
+          "Orc": 0.116
+        },
+        {
+          "name": "fR_late_time",
+          "chi2": 707.76,
+          "k": 4,
+          "H0": 73.01,
+          "Om": 0.26,
+          "delta": 0.0767,
+          "z_star": 0.402
+        },
+        {
+          "name": "wCDM",
+          "chi2": 729.88,
+          "k": 3,
+          "H0": 68.83,
+          "Om": 0.291,
+          "w": -0.95
+        },
+        {
+          "name": "EDE_proxy_rd_free",
+          "chi2": 720.95,
+          "k": 3,
+          "H0": 71.77,
+          "Om": 0.304,
+          "rd_best": 140.75
+        }
+      ],
+      "winner_background_only": "fR_late_time"
+    },
+    "D_S8_crosscheck": {
+      "S8_obs": {
+        "KiDS_1000": [
+          0.759,
+          0.024
+        ],
+        "DES_Y3": [
+          0.776,
+          0.017
+        ],
+        "Planck_CMB": [
+          0.832,
+          0.013
+        ]
+      },
+      "predictions": [
+        {
+          "name": "LCDM_Planck",
+          "S8": 0.831,
+          "sigma_KiDS_DES": 3.23
+        },
+        {
+          "name": "LCDM_SHOES",
+          "S8": 0.802,
+          "sigma_KiDS_DES": 1.82
+        },
+        {
+          "name": "DGP",
+          "S8": 0.567,
+          "sigma_KiDS_DES": -9.95
+        },
+        {
+          "name": "fR_late_time",
+          "S8": 0.78,
+          "sigma_KiDS_DES": 0.71
+        },
+        {
+          "name": "EDE_proxy",
+          "S8": 0.888,
+          "sigma_KiDS_DES": 6.11
+        }
+      ],
+      "combined_ranking": [
+        {
+          "rank": 1,
+          "name": "fR_late_time",
+          "total_chi2": 708.26
+        },
+        {
+          "rank": 2,
+          "name": "LCDM_Planck",
+          "total_chi2": 726.28
+        },
+        {
+          "rank": 3,
+          "name": "LCDM_SHOES",
+          "total_chi2": 735.01
+        },
+        {
+          "rank": 4,
+          "name": "EDE_proxy",
+          "total_chi2": 758.26
+        },
+        {
+          "rank": 5,
+          "name": "DGP",
+          "total_chi2": 815.38
+        }
+      ]
+    }
+  },
+  "main_conclusion": "f(R) late-time MG appears to simultaneously resolve H0+S8 better than EDE in this background+phenomenological-growth analysis. To be confirmed at Level 5 with MGCAMB.",
+  "caveats": [
+    "f(R) growth approximated as +5% sigma8 boost; replace with MGCAMB",
+    "Diagonal SNe errors only; full 1701x1701 covariance pending",
+    "CMB constraints not yet imposed on f(R)",
+    "Phenomenological f(R) ansatz may overfit"
+  ],
+  "next": "Level 5 \u2014 MGCAMB f(R) + RSD + ISW + joint MCMC"
+}

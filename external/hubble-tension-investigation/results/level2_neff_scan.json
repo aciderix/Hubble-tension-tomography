@@ -1,0 +1,112 @@
+{
+  "context": "Level 2 \u0394N_eff scan at fixed 100*\u03b8_s=1.04110 (Planck)",
+  "boltzmann_code": "classy 3.3.4",
+  "fixed_params": {
+    "100*theta_s": 1.0411,
+    "omega_b": 0.02237,
+    "omega_cdm": 0.12,
+    "A_s": 2.1e-09,
+    "n_s": 0.9649,
+    "tau_reio": 0.0544
+  },
+  "scan": [
+    {
+      "dN_eff": 0.0,
+      "H0": 55.754,
+      "r_d": 152.53,
+      "Om": 0.458,
+      "sigma8": 0.8493,
+      "S8": 1.0495,
+      "H0_rd": 8504.2
+    },
+    {
+      "dN_eff": 0.5,
+      "H0": 61.584,
+      "r_d": 149.77,
+      "Om": 0.3754,
+      "sigma8": 0.838,
+      "S8": 0.9374,
+      "H0_rd": 9223.3
+    },
+    {
+      "dN_eff": 1.0,
+      "H0": 67.47,
+      "r_d": 147.17,
+      "Om": 0.3127,
+      "sigma8": 0.8239,
+      "S8": 0.8412,
+      "H0_rd": 9929.6
+    },
+    {
+      "dN_eff": 1.5,
+      "H0": 73.412,
+      "r_d": 144.72,
+      "Om": 0.2642,
+      "sigma8": 0.8081,
+      "S8": 0.7583,
+      "H0_rd": 10624.4
+    },
+    {
+      "dN_eff": 2.0,
+      "H0": 79.408,
+      "r_d": 142.41,
+      "Om": 0.2258,
+      "sigma8": 0.7911,
+      "S8": 0.6863,
+      "H0_rd": 11308.5
+    }
+  ],
+  "joint_chi2_H0_S8": {
+    "H0_anchor": "SH0ES 73.04 \u00b1 1.04",
+    "S8_anchor": "DES Y3 0.776 \u00b1 0.017",
+    "values": [
+      535.02,
+      211.45,
+      43.41,
+      1.21,
+      65.33
+    ]
+  },
+  "Cls_consistency": {
+    "ratio_TT_vs_LCDM": {
+      "ell_200": [
+        1.0,
+        1.03,
+        1.058,
+        1.086,
+        1.114
+      ],
+      "ell_500": [
+        1.0,
+        1.021,
+        1.041,
+        1.06,
+        1.078
+      ],
+      "ell_1000": [
+        1.0,
+        0.976,
+        0.955,
+        0.936,
+        0.919
+      ],
+      "ell_2000": [
+        1.0,
+        0.938,
+        0.883,
+        0.834,
+        0.788
+      ],
+      "ell_2500": [
+        1.0,
+        0.915,
+        0.841,
+        0.777,
+        0.721
+      ]
+    },
+    "planck_TT_error": "<0.5% in ell \u2208 [200, 2000]",
+    "verdict": "\u0394N_eff > 0.4 excluded at >2\u03c3; \u0394N_eff = 1.5 excluded at ~7.5\u03c3"
+  },
+  "conclusion": "Pure dark radiation cannot resolve H0 tension. Justifies need for true axion-like EDE (CLASS_EDE/AxiCLASS, future Level 3 work)."
+}
