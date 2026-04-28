@@ -1,0 +1,25 @@
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+*.egg-info/
+.venv/
+venv/
+.env
+
+# MCMC / heavy outputs (regenerable)
+chains/
+runs/
+out/
+*.h5
+*.hdf5
+!external/**/*.h5
+!external/**/*.hdf5
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
