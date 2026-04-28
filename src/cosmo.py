@@ -14,6 +14,16 @@ def E_LCDM(z, Om):
     return np.sqrt(Om * (1.0 + z) ** 3 + (1.0 - Om))
 
 
+def E_LCDM_with_rad(z, Om, h, Or=None, Neff=3.046):
+    """E(z) including radiation. h = H0/100. If Or is None, derived from Tcmb=2.7255."""
+    if Or is None:
+        # Omega_gamma = (4 sigma T^4 / c^3) / (rho_crit) -> ≈ 2.47e-5 / h^2 for T=2.7255
+        Og = 2.47e-5 / h ** 2
+        Or = Og * (1.0 + 7.0 / 8.0 * (4.0 / 11.0) ** (4.0 / 3.0) * Neff)
+    Ode = 1.0 - Om - Or
+    return np.sqrt(Or * (1.0 + z) ** 4 + Om * (1.0 + z) ** 3 + Ode)
+
+
 def H_of_z(z, H0, Om):
     return H0 * E_LCDM(z, Om)
 
@@ -61,6 +71,19 @@ def rd_aubourg(omh2, obh2, omnuh2=0.0):
     """
     return (55.154 * np.exp(-72.3 * (omnuh2 + 0.0006) ** 2)
             / (omh2 ** 0.25351 * obh2 ** 0.12807))
+
+
+def rd_planck_anchored(omh2, obh2, Neff=3.046):
+    """Brieden+ 2023 fitting form, anchored on Planck 2018 ΛCDM best-fit
+    (omh2=0.1430, obh2=0.02236, Neff=3.046, rd=147.05 Mpc).
+
+    Accurate to ~0.1% near Planck cosmology and matches CAMB at the central
+    point by construction; preferred over Aubourg for our compressed-CMB
+    likelihood.
+    """
+    return 147.05 * (omh2 / 0.1430) ** (-0.234) \
+                  * (obh2 / 0.02236) ** (-0.124) \
+                  * (Neff / 3.046) ** (-0.301)
 
 
 def E_w0wa(z, Om, w0, wa):

@@ -72,6 +72,27 @@ class HubbleLH:
         d = self.bao_val - self._bao_pred_lcdm(H0, Om, rd)
         return float(d @ self.bao_invcov @ d)
 
+    # ---------- CMB compressed (Planck 2018 distance priors) ----------
+    def chi2_cmb(self, H0, Om, obh2, rd=None, Neff=3.046):
+        """Compressed Planck CMB (R, lA, omega_b). If rd is None, uses
+        Brieden anchored fitting form; else uses supplied rd directly.
+        """
+        from .cmb_compressed import chi2_cmb as _cmb, chi2_cmb_with_rd
+        if rd is None:
+            return _cmb(H0, Om, obh2, Neff=Neff)
+        return chi2_cmb_with_rd(H0, Om, obh2, rd, Neff=Neff)
+
     # ---------- Joint ----------
     def chi2_joint(self, H0, Om, M, rd, use_calib=True):
         return self.chi2_pp(H0, Om, M, use_calib=use_calib) + self.chi2_bao(H0, Om, rd)
+
+    def chi2_full(self, H0, Om, M, rd, obh2, use_calib=True, Neff=3.046):
+        """Full SN + BAO + CMB-compressed joint chi2.
+
+        rd is supplied externally; if you want LCDM-consistent rd, pass
+        rd_planck_anchored(Om*h^2, obh2). The CMB term then "sees" the same rd
+        used for BAO, which is the self-consistent LCDM case.
+        """
+        return (self.chi2_pp(H0, Om, M, use_calib=use_calib)
+                + self.chi2_bao(H0, Om, rd)
+                + self.chi2_cmb(H0, Om, obh2, rd=rd, Neff=Neff))
