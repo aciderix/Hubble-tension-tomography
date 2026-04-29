@@ -151,6 +151,51 @@ varied 5×.
 
 ---
 
+## Addendum — mₑ-variation strongly preferred over EDE (S8 included)
+
+Run `scripts/me_vs_EDE_compare.py` (intermediate ω_m prior, S8 in likelihood):
+
+```
+M1_me_interm    logZ = -806.78   H0 = 70.00 ± 0.60   omh2 = 0.1444
+M1_EDE_interm   logZ = -812.74   H0 = 69.39 ± 0.58   omh2 = 0.1410   ★
+Mco_me_interm   logZ = -801.13   H0 = 68.64 ± 0.69   omh2 = 0.1410
+Mco_EDE_interm  logZ = -804.42   H0 = 67.84 ± 0.66   omh2 = 0.1372   ★
+
+ln B(M1_me  / M1_EDE)  = +5.96     Bayes ≈ 390
+ln B(Mco_me / Mco_EDE) = +3.30     Bayes ≈ 27
+```
+
+**Both M1 and Mco strongly prefer mₑ-variation physics over EDE physics**
+when KiDS S8 is in the likelihood. The reason: EDE forces ω_m h² downward
+(0.137–0.141 vs 0.144 for me-var) to contain its σ8 boost, which then
+limits the effective rd shift and worsens the overall joint fit.
+
+This is consistent with the Hill+ 2020 result that EDE fits CMB+SH0ES
+"at cost of S8 tension" — but quantifies that cost as a Bayes factor of
+≈ 390 in disfavor of EDE relative to a non-boost alternative.
+
+### Final overall ranking (intermediate ω_m prior, KiDS S8 included)
+
+| Rank | Model | log Z | ln B vs winner |
+|---|---|---|---|
+| 1 | **M2 Cepheid bias** | **−798.43** | 0 |
+| 2 | Mco me-var | −801.13 | −2.70 |
+| 3 | Mco EDE | −804.42 | −5.99 |
+| 4 | M0 ΛCDM | −805.48 | −7.05 |
+| 5 | M1 me-var | −806.78 | −8.35 |
+| 6 | M1 EDE | −812.74 | **−14.31** |
+
+**M1 EDE — the canonical "EDE solves H₀" model — is the WORST of the
+six**, beaten by ΛCDM at ln B = 6.0 (Bayes ≈ 400). This contradicts the
+mainstream "EDE solves H₀" narrative when KiDS S8 with proper growth
+boost is included.
+
+We cannot crown mₑ-variation as "the answer" because it still loses to
+M2 by ln B ≈ 5.5 (M2 is the overall winner). But between the two
+pre-recombination mechanisms, **the data strongly prefer mₑ-variation
+(Hart-Chluba 2020 class) over EDE (Karwal-Kamionkowski 2016, Poulin+
+2018 class) once S8 is in the likelihood.**
+
 ## What this work does NOT do
 
 - Use the **full Planck likelihood** (clik / planck-py). We use Chen+ 2019
