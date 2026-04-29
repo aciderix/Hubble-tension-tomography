@@ -237,6 +237,33 @@ mₑ-variation-class pre-recombination physics requires choosing a side in the
 KiDS/DES-vs-Planck-lensing S8 tension (currently ~2.5σ apart). Until that
 S8 tension itself is resolved, the rd-shift physics is undetermined.
 
+## Addendum 3 — TDCOSMO time-delay anchor
+
+The most decisive external H₀ anchor currently available is TDCOSMO time-delay
+cosmography. We test both interpretations as Gaussian H₀ priors on top of M2
+and M1_me (intermediate ω_m prior + KiDS S8):
+
+```
+                                 M2 logZ    M1_me logZ    ln B(M2/M1_me)
+Baseline (no TDCOSMO)             -798.43    -806.78        +8.35  (Bayes ~4000)
++ TDCOSMO_NFW   (73.3 ± 1.8)      -801.46    -808.33        +6.87  (Bayes ~970)
++ TDCOSMO_relax (67.4 ± 3.65)     -798.48    -807.03        +8.55  (slightly stronger)
+```
+
+Analytical predictions validated:
+- Δχ² on M2 with TDCOSMO_NFW: predicted 6.07, observed 6.06
+- Δχ² on M1_me with TDCOSMO_NFW: predicted 3.03, observed 3.10
+- Δχ² on M2 with TDCOSMO_relaxed: predicted 0.12, observed 0.10
+
+**M2 wins even when TDCOSMO_NFW (the SH0ES-favoring interpretation) is
+added.** Bayes factor drops from 4000 to 970 but is still "strong" by the
+Jeffreys scale. To overturn M2, TDCOSMO would need to provide ~10 nats of
+disagreement; it currently provides only −1.5 nats.
+
+Adding TDCOSMO_relaxed (the mass-sheet-aware version) actually slightly
+*strengthens* M2 because Birrer+ 2020 H₀ = 67.4 ± 3.65 is consistent with
+our M2 H₀ marginal of 68.81.
+
 ## What this work does NOT do
 
 - Use the **full Planck likelihood** (clik / planck-py). We use Chen+ 2019
