@@ -13,6 +13,9 @@ runs/
 out/
 *.h5
 *.hdf5
+*.log
+out_*.json
+out_*.npz
 !external/**/*.h5
 !external/**/*.hdf5
 
