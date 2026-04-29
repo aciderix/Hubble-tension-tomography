@@ -196,6 +196,47 @@ pre-recombination mechanisms, **the data strongly prefer mₑ-variation
 (Hart-Chluba 2020 class) over EDE (Karwal-Kamionkowski 2016, Poulin+
 2018 class) once S8 is in the likelihood.**
 
+## Addendum 2 — S8 dataset sensitivity (5 datasets × 4 models = 20 runs)
+
+Per the next ChatGPT/Gemini-recommended robustness layer: tested whether the
+M2-wins conclusion depends on which S8 dataset we trust.
+
+```
+Dataset                              M0       M1_me      M1_EDE       M2     Winner
+KiDS-1000     (0.766 ± 0.020)    -805.48    -806.78    -812.74    -798.43    M2
+DES Y3        (0.776 ± 0.017)    -805.19    -806.47    -812.58    -798.03    M2
+KiDS+DES      (0.770 ± 0.013)    -805.72    -808.19    -815.33    -798.98    M2
+Planck lens   (0.832 ± 0.013)    -808.50    -802.34    -806.57    -799.51    M2
+No S8 likelihood                  -804.82    -799.62    -799.62    -797.24    M2
+
+Bayes factors vs M0 in each row:
+                                M1_me        M1_EDE        M2
+  KiDS-1000                     -1.30        -7.26        +7.05
+  DES Y3                        -1.28        -7.39        +7.16
+  KiDS+DES                      -2.47        -9.61        +6.74
+  Planck lens                   +6.16        +1.93        +8.99
+  No S8                         +5.20        +5.20        +7.58
+```
+
+**Robust:** M2 wins over M0 in every scenario; ln B(M2/M0) = 6.74 to 8.99.
+M2 marginal H₀ = 68.3–68.9 km/s/Mpc, stable across scenarios.
+
+**S8-dataset-dependent:**
+- M1_me viability flips between datasets: ln B(M1_me/M0) = −2.47 (KiDS+DES)
+  to +6.16 (Planck lensing). Under low-S8 datasets the rd-shift is
+  penalized; under high-S8 datasets it's preferred.
+- M1_EDE viability flips even more dramatically: catastrophic under
+  KiDS+DES (ln B = −9.61) but viable under Planck lensing (+1.93 vs M0).
+- **Without S8 in the likelihood, M1_me ≡ M1_EDE exactly** (logZ identical
+  to numerical precision). This proves that **S8 is the *sole* discriminator
+  between the two pre-recombination mechanisms** in our analysis.
+
+**Meta-finding:** The H₀-tension verdict (M2 vs M1) is robust to the choice
+of S8 dataset — M2 always wins. But discriminating between EDE-class and
+mₑ-variation-class pre-recombination physics requires choosing a side in the
+KiDS/DES-vs-Planck-lensing S8 tension (currently ~2.5σ apart). Until that
+S8 tension itself is resolved, the rd-shift physics is undetermined.
+
 ## What this work does NOT do
 
 - Use the **full Planck likelihood** (clik / planck-py). We use Chen+ 2019
